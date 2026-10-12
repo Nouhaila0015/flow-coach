@@ -39,3 +39,9 @@ export function weekStart(s: string): string {
   const day = parse(s).getDay(); // 0 = dimanche
   return addDays(s, -((day + 6) % 7));
 }
+
+/** « 25/09/2026 » */
+export function frDate(s: string): string {
+  const [y, m, d] = s.split('-');
+  return `${d}/${m}/${y}`;
+}

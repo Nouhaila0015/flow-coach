@@ -3,6 +3,8 @@ import { join } from 'node:path';
 import express, { type NextFunction, type Request, type Response } from 'express';
 import type { Db } from './db.js';
 import { HttpError } from './http.js';
+import { periodsRouter } from './periods.js';
+import { profileRouter } from './profile.js';
 
 export function createApp(db: Db, frontDir?: string) {
   const app = express();
@@ -12,6 +14,8 @@ export function createApp(db: Db, frontDir?: string) {
   api.get('/health', (_req, res) => {
     res.json({ ok: true });
   });
+  api.use(profileRouter(db));
+  api.use(periodsRouter(db));
   app.use('/api', api);
   app.use('/api', (_req, res) => {
     res.status(404).json({ error: 'Route inconnue' });
