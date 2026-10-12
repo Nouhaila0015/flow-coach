@@ -1,0 +1,9 @@
+node_modules/
+dist/
+back/data/
+*.log
+.DS_Store
+flow-coach.pid
+# Copies de conflit iCloud (Bureau synchronisé)
+* 2.*
+* 2
