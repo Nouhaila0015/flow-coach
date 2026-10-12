@@ -74,6 +74,26 @@ const MIGRATIONS: string[] = [
     updated_at TEXT NOT NULL
   );
   `,
+  `
+  CREATE TABLE exercises (
+    id TEXT PRIMARY KEY,
+    position INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    type TEXT NOT NULL,
+    equipment TEXT NOT NULL,
+    level INTEGER NOT NULL,
+    impact TEXT NOT NULL,
+    zone TEXT NOT NULL,
+    mode TEXT NOT NULL,
+    per_side INTEGER NOT NULL,
+    defaults TEXT NOT NULL,
+    default_loads TEXT,
+    cues TEXT NOT NULL,
+    easier TEXT,
+    harder TEXT,
+    mat_advised INTEGER NOT NULL
+  );
+  `,
 ];
 
 export function openDb(file: string): Db {

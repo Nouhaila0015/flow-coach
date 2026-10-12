@@ -76,3 +76,56 @@ export const PHASE_COLORS: Record<Phase, string> = {
   ovulatoire: 'var(--ovulatoire)',
   luteale: 'var(--luteale)',
 }
+
+export type SessionType = 'renfo' | 'cardio' | 'doux' | 'course'
+export type ExerciseEquipment = 'none' | 'dumbbells' | 'band' | 'outdoor'
+
+export interface Exercise {
+  id: string
+  name: string
+  type: SessionType
+  equipment: ExerciseEquipment
+  level: 1 | 2 | 3
+  impact: 'faible' | 'fort'
+  zone: 'bas' | 'haut' | 'gainage' | 'corps'
+  mode: 'reps' | 'time'
+  perSide: boolean
+  defaults: [number, number, number]
+  defaultLoads: [number, number, number] | null
+  cues: [string, string, string]
+  easier: string | null
+  harder: string | null
+  matAdvised: boolean
+}
+
+export interface ExerciseDetail extends Exercise {
+  best: { date: string; reps: number | null; duration: number | null; load: number | null } | null
+}
+
+export const TYPE_LABELS: Record<SessionType, string> = {
+  renfo: 'Renfo',
+  cardio: 'Cardio / HIIT',
+  doux: 'Doux',
+  course: 'Course',
+}
+
+export const TYPE_COLORS: Record<SessionType, string> = {
+  renfo: 'var(--renfo)',
+  cardio: 'var(--cardio)',
+  doux: 'var(--doux)',
+  course: 'var(--course)',
+}
+
+export const EXERCISE_EQUIPMENT_LABELS: Record<ExerciseEquipment, string> = {
+  none: 'sans matériel',
+  dumbbells: 'haltères',
+  band: 'élastique',
+  outdoor: 'extérieur',
+}
+
+export const ZONE_LABELS: Record<Exercise['zone'], string> = {
+  bas: 'bas du corps',
+  haut: 'haut du corps',
+  gainage: 'gainage',
+  corps: 'corps entier',
+}
