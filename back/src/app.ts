@@ -8,6 +8,7 @@ import { historyRouter } from './history.js';
 import { HttpError } from './http.js';
 import { periodsRouter } from './periods.js';
 import { profileRouter } from './profile.js';
+import { statsRouter } from './stats.js';
 import { sessionsRouter } from './sessions.js';
 
 export function createApp(db: Db, frontDir?: string) {
@@ -25,6 +26,7 @@ export function createApp(db: Db, frontDir?: string) {
   api.use(sessionsRouter(db));
   api.use(guidedRouter(db));
   api.use(historyRouter(db));
+  api.use(statsRouter(db));
   app.use('/api', api);
   app.use('/api', (_req, res) => {
     res.status(404).json({ error: 'Route inconnue' });

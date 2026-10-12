@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { api } from './api'
 import { Layout } from './components/Layout'
 import { CyclePage } from './pages/CyclePage'
+import { DashboardPage } from './pages/DashboardPage'
 import { HistoryPage } from './pages/HistoryPage'
 import { LibraryPage } from './pages/LibraryPage'
 import { Onboarding } from './pages/Onboarding'
@@ -36,6 +37,7 @@ function page(route: string, profile: Profile, setProfile: (p: Profile) => void)
   if (route === '/cycle') return <CyclePage />
   if (route === '/bibliotheque') return <LibraryPage />
   if (route === '/profil') return <ProfilePage profile={profile} onSaved={setProfile} />
+  if (route === '/tableau-de-bord') return <DashboardPage />
   if (route === '/historique') return <HistoryPage />
   const past = match('/historique/:id', route)
   if (past) return <HistoryPage selectedId={Number(past.id)} />
