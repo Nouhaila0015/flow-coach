@@ -205,3 +205,21 @@ export const PLACE_LABELS: Record<Place, string> = {
 }
 
 export const BLOCK_LABELS: Record<Block, string> = { warmup: 'Échauffement', main: 'Corps de séance', cooldown: 'Retour au calme' }
+
+/** Ligne de l'historique. */
+export interface SessionSummary {
+  id: number
+  date: string
+  type: SessionType
+  intensity: Intensity
+  status: 'done' | 'interrupted'
+  durationSec: number | null
+  rpe: number | null
+  phase: Phase
+  cycleDay: number
+  energy: number
+}
+
+export const DESIRE_LABELS: Record<Desire, string> = {
+  auto: 'le coach décide', renfo: 'renfo', cardio: 'cardio / HIIT', doux: 'doux', course: 'course',
+}
