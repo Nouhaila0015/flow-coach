@@ -223,3 +223,21 @@ export interface SessionSummary {
 export const DESIRE_LABELS: Record<Desire, string> = {
   auto: 'le coach décide', renfo: 'renfo', cardio: 'cardio / HIIT', doux: 'doux', course: 'course',
 }
+
+export type StatsPeriod = '4w' | '12w' | 'all'
+
+export interface ProgressPoint {
+  sessionId: number
+  date: string
+  reps: number | null
+  duration: number | null
+  load: number | null
+}
+
+export interface Stats {
+  period: StatsPeriod
+  kpis: { weekDone: number; weekTarget: number; streak: number; sessions: number; totalMinutes: number; averageRpe: number | null }
+  weeks: { start: string; sessions: number; minutes: Record<SessionType, number> }[]
+  phases: { phase: Phase; sessions: number; energy: number | null; rpe: number | null }[]
+  exercises: { id: string; name: string; mode: 'reps' | 'time'; points: ProgressPoint[] }[]
+}
