@@ -119,6 +119,7 @@ textarea.field { width: 100%; min-height: 80px; resize: vertical; }
 table.table { width: 100%; border-collapse: collapse; }
 .table th, .table td { text-align: left; padding: 9px 8px; border-bottom: 1px solid #f0ebf2; white-space: nowrap; }
 .table th { font-size: 12px; color: var(--muted); font-weight: 800; }
+.table.small th, .table.small td { padding: 8px 6px; }
 .table tr.clickable { cursor: pointer; }
 .table tr.clickable:hover { background: #faf8fc; }
 .table tr.selected { background: #f4f0fa; }

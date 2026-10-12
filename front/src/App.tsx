@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { api } from './api'
 import { Layout } from './components/Layout'
 import { CyclePage } from './pages/CyclePage'
+import { HistoryPage } from './pages/HistoryPage'
 import { LibraryPage } from './pages/LibraryPage'
 import { Onboarding } from './pages/Onboarding'
 import { ProfilePage } from './pages/ProfilePage'
@@ -35,6 +36,9 @@ function page(route: string, profile: Profile, setProfile: (p: Profile) => void)
   if (route === '/cycle') return <CyclePage />
   if (route === '/bibliotheque') return <LibraryPage />
   if (route === '/profil') return <ProfilePage profile={profile} onSaved={setProfile} />
+  if (route === '/historique') return <HistoryPage />
+  const past = match('/historique/:id', route)
+  if (past) return <HistoryPage selectedId={Number(past.id)} />
   const preview = match('/apercu/:id', route)
   if (preview) return <PreviewPage key={preview.id} id={Number(preview.id)} />
   const guided = match('/seance/:id', route)

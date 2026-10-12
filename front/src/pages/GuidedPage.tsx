@@ -76,7 +76,7 @@ export function GuidedPage({ id }: { id: number }) {
 
   // Nouvel exercice : préremplit le réalisé et lance le compte à rebours des exercices en durée.
   useEffect(() => {
-    if (!current || phase !== 'work') return
+    if (!current || phase !== 'work' || session?.status !== 'in_progress') return
     setReps(current.targetReps !== null ? String(current.targetReps) : '')
     setLoad(current.targetLoad !== null ? String(current.targetLoad) : '')
     if (current.targetDuration !== null) {
@@ -85,7 +85,7 @@ export function GuidedPage({ id }: { id: number }) {
     } else {
       countdown.stop()
     }
-  }, [current?.id, phase])
+  }, [current?.id, phase, session?.status])
 
   // Plus aucun exercice à faire : écran de fin.
   useEffect(() => {
