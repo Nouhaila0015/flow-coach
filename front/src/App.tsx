@@ -5,7 +5,9 @@ import { CyclePage } from './pages/CyclePage'
 import { LibraryPage } from './pages/LibraryPage'
 import { Onboarding } from './pages/Onboarding'
 import { ProfilePage } from './pages/ProfilePage'
-import { useRoute } from './router'
+import { PreviewPage } from './pages/PreviewPage'
+import { TodayPage } from './pages/TodayPage'
+import { match, useRoute } from './router'
 import type { Profile } from './types'
 
 export default function App() {
@@ -31,10 +33,7 @@ function page(route: string, profile: Profile, setProfile: (p: Profile) => void)
   if (route === '/cycle') return <CyclePage />
   if (route === '/bibliotheque') return <LibraryPage />
   if (route === '/profil') return <ProfilePage profile={profile} onSaved={setProfile} />
-  return (
-    <>
-      <h1>Flow Coach</h1>
-      <div className="card muted">Page en construction.</div>
-    </>
-  )
+  const preview = match('/apercu/:id', route)
+  if (preview) return <PreviewPage key={preview.id} id={Number(preview.id)} />
+  return <TodayPage />
 }

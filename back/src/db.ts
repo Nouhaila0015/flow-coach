@@ -21,7 +21,7 @@ const MIGRATIONS: string[] = [
     start_date TEXT NOT NULL UNIQUE
   );
   CREATE TABLE checkins (
-    id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     date TEXT NOT NULL,
     energy INTEGER NOT NULL,
     minutes INTEGER NOT NULL,
@@ -32,7 +32,7 @@ const MIGRATIONS: string[] = [
     created_at TEXT NOT NULL
   );
   CREATE TABLE sessions (
-    id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     checkin_id INTEGER NOT NULL REFERENCES checkins(id),
     date TEXT NOT NULL,
     type TEXT NOT NULL,
@@ -49,7 +49,7 @@ const MIGRATIONS: string[] = [
     comment TEXT
   );
   CREATE TABLE session_items (
-    id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     session_id INTEGER NOT NULL REFERENCES sessions(id) ON DELETE CASCADE,
     position INTEGER NOT NULL,
     block TEXT NOT NULL,
