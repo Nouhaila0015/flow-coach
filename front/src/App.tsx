@@ -5,6 +5,8 @@ import { CyclePage } from './pages/CyclePage'
 import { LibraryPage } from './pages/LibraryPage'
 import { Onboarding } from './pages/Onboarding'
 import { ProfilePage } from './pages/ProfilePage'
+import { FinishPage } from './pages/FinishPage'
+import { GuidedPage } from './pages/GuidedPage'
 import { PreviewPage } from './pages/PreviewPage'
 import { TodayPage } from './pages/TodayPage'
 import { match, useRoute } from './router'
@@ -35,5 +37,9 @@ function page(route: string, profile: Profile, setProfile: (p: Profile) => void)
   if (route === '/profil') return <ProfilePage profile={profile} onSaved={setProfile} />
   const preview = match('/apercu/:id', route)
   if (preview) return <PreviewPage key={preview.id} id={Number(preview.id)} />
+  const guided = match('/seance/:id', route)
+  if (guided) return <GuidedPage key={guided.id} id={Number(guided.id)} />
+  const end = match('/fin/:id', route)
+  if (end) return <FinishPage key={end.id} id={Number(end.id)} />
   return <TodayPage />
 }
